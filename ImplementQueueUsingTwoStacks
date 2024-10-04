@@ -1,0 +1,42 @@
+Intution : The idea is that first we create two  stacks s1 and s2 
+Push: For push we simply push it into the  stack1 
+POP : to pop the implement that follow  the queue property first we pop all the elements from s1 and push it into the stack s2 then we pop the first element from the stack s2
+Peek : for peek we do the same think as pop the element 
+empty : for empty we simply check that either our first and second stacks are not empty 
+
+
+
+class MyQueue {
+public:
+    stack<int>st1;
+    stack<int>st2;
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        st1.push(x);
+    }
+    
+    int pop() {
+        peek();
+        int val = st2.top();
+        st2.pop();
+        return val;
+    }
+    
+    int peek() {
+        if(st2.empty()){
+            while(!st1.empty()){
+                st2.push(st1.top());
+                st1.pop();
+            }
+        }
+        return st2.top();
+    }
+    
+    bool empty() {
+        return st1.empty() && st2.empty();
+    }
+};
+
