@@ -1,0 +1,43 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+class QueueUsingStack{
+    stack<int>st;
+public: 
+     void enque(int x){
+         st.push(x);
+         cout<<x <<" Enqueud to the queue "<<endl;
+     }
+     int deque(){
+         if(st.size() == 1){
+             int front = st.top();
+             st.pop();
+             return front;
+         }
+         int temp = st.top();
+         st.pop();
+         
+         int result = deque();
+         
+         
+        st.push(temp);
+        
+        return result;
+     }
+     
+     bool isEmpty(){
+         return (st.size() == 0) ? true : false;
+     }
+
+};
+int main() {
+    QueueUsingStack q;
+    q.enque(1);
+    q.enque(2);
+    q.enque(3);
+    q.enque(4);
+    q.enque(5);
+    
+    cout<<q.deque()<<" ";
+    
+}
